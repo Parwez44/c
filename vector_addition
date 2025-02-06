@@ -1,0 +1,21 @@
+// Function to add two vectors
+void addVectors(struct Vector v1, struct Vector v2) {
+    int sumx = v1.x + v2.x;
+    int sumy = v1.y + v2.y;
+    printf("The sum of x component is %di and y component is %dj\n", sumx, sumy);
+}
+
+int main() {
+    struct Vector v1, v2;
+    printf("Enter x component of first vector: ");
+    scanf("%d", &v1.x);
+    printf("Enter y component of first vector: ");
+    scanf("%d", &v1.y);
+    printf("Enter x component of second vector: ");
+    scanf("%d", &v2.x);
+    printf("Enter y component of second vector: ");
+    scanf("%d", &v2.y);
+    addVectors(v1, v2);
+
+    return 0;
+}
