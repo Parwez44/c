@@ -1,0 +1,186 @@
+#include<stdio.h>
+void main(){
+    char str1[100],str2[100],str3[100],concat[100],substring[10];
+    int i=0, length=0, j=0,vowel=0,found;
+    int choice;
+    printf("Enter 1st string :");
+    fgets(str1,sizeof(str1),stdin);
+    printf("Enter 2nd string :");
+    fgets(str2,sizeof(str2),stdin);
+    while(str1[i] != '\0'){
+        if(str1[i] == '\n'){
+            str1[i]='\0';
+        }
+        i++;
+    }
+        while(str2[i] != '\0'){
+            if(str2[i] == '\n'){
+                str2[i]='\0';
+            }
+            i++;
+        }
+    do{
+        printf("\nMenu:\n");
+        printf("1. Length of the string\n");
+        printf("2. Total number of characters (excluding space)\n");
+        printf("3. Total number of vowels\n");
+        printf("4. Copy string1 into another\n");
+        printf("5. Compare two strings\n");
+        printf("6. Find the longer string\n");
+        printf("7. Concatenate two strings\n");
+        printf("8. Find occurrence of substring in main string\n");
+        printf("9. Exit\n");
+        printf("Enter your choice: ");
+        scanf("%d", &choice);
+        switch(choice){
+            case 1:
+            i=0;
+            while(str1[i] != '\0'){
+                length++;
+                i++;
+            }
+            printf("length of first string is %d",length);
+            break;
+
+            case 2:
+            length=0;
+            i=0;
+            while(str1[i] != 0){
+                if(str1[i] !=' '){
+                    length++;
+                }
+                i++;
+            }
+            printf("The total character is :%d",length);
+            break;
+
+            case 3:
+            i=0;
+            while(str1[i] != '\0'){
+                if(str1[i] == 'A' || str1[i] == 'E' || str1[i] == 'I' || str1[i] == 'O' || str1[i] == 'U' ||
+                    str1[i] == 'a' || str1[i] == 'e' || str1[i] == 'i' || str1[i] == 'o' || str1[i] == 'u'){
+                    vowel+=1;
+                }
+                i++;
+            }
+                
+        printf("The total vowel in 1st string are: %d",vowel);
+        break;
+
+        case 4:
+        i=0;
+        while(str1[i] != '\0'){
+            str3[i]=str1[i];
+            i++;
+        }
+        str3[i] = '\0';
+        printf("String is copied in 3rd string: %s",str3);
+        break;
+
+        case 5:
+        i=0;
+        j=0;
+        if(str1[i]!=str2[i]){
+            printf("string is not equal:");
+           
+        }
+        else{
+            printf("string is equal:");
+        }
+        break;
+        
+
+        case 6:
+        i=0;
+        //length=0;
+        j=0;
+        while(str1[i] !='\0'){
+            i++;
+        }
+        while(str2[j] !='\0'){
+            j++;
+        }
+
+        if(i>j){
+            printf("1st string is longer");
+        }
+        else if(i<j){
+            printf("2nd string is longer");
+        }
+        else{
+            printf("Both are equal so no one is longer");
+        }
+        break;
+
+        case 7:
+        i=0;
+        j=0;
+        while(str1[i] != '\0'){
+            concat[i]=str1[i];
+            i++;
+        }
+
+        concat[i]=' ';
+        i++;
+        while(str2[j] !='\0'){
+            concat[i]=str2[j];
+            i++;
+            j++;
+        }
+        concat[i]='\0';
+        printf("The concated string is :  %s ",concat);
+        break;
+
+        case 8:
+                printf("Enter substring to search: ");
+                fgets(substring, sizeof(substring), stdin);
+                
+                // Remove newline character from substring
+                i = 0;
+                while (substring[i] != '\0') {
+                    if (substring[i] == '\n') {
+                        substring[i] = '\0';
+                        break;
+                    }
+                    i++;
+                }
+                
+                i = 0;
+                while (str1[i] != '\0') {
+                    j = 0;
+                    found = 1;
+                    
+                    while (substring[j] != '\0') {
+                        if (str1[i + j] != substring[j]) {
+                            found = 0;
+                            break;
+                        }
+                        j++;
+                    }
+                    
+                    if (found) {
+                        printf("Substring found at index: %d\n", i);
+                        break;
+                    }
+                    
+                    i++;
+                }
+                
+                if (!found) {
+                    printf("Substring not found.\n");
+                }
+                break;
+
+                case 9:
+                printf("Exiting program...\n");
+                break;
+
+            default:
+                printf("Invalid choice! Please enter a valid option.\n");
+        }
+    }while(choice != 9);
+}
+
+
+
+
